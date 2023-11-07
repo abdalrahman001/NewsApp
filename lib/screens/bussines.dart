@@ -17,11 +17,11 @@ class BusinessScreen extends StatelessWidget {
 
         var list=AppCubit.get(context).business;
         return ConditionalBuilder(
-          condition: state is! GetBusinessLoadingState,
+          condition: list.length>0,
           builder: (context) => ListView.separated(
             itemBuilder: (context,index)=>buildAritcleItem(list[index]),
             separatorBuilder: (BuildContext context, int index)  =>SizedBox(height: 20,) ,
-            itemCount: 10,
+            itemCount: 20,
             physics: BouncingScrollPhysics(),
           ),
           fallback: (context) =>

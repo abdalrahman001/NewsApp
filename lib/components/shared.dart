@@ -1,7 +1,10 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
 Widget buildAritcleItem(article) => Padding(
+
   padding: const EdgeInsets.all(20),
+
   child: Row(
     children: [
       Container(
@@ -27,16 +30,19 @@ Widget buildAritcleItem(article) => Padding(
             children: [
               Expanded(
                 child: Text(
+
                   '${article['title'] ?? 'No Title'}',
-                  style: TextStyle(
-                    fontSize: 30,
+                  style:
+                  TextStyle(
+                    fontSize: 15,
                     fontWeight: FontWeight.w600,
                   ),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 4,
                 ),
               ),
-              Text('${article['publishedAt'] ?? 'No Date'}')
+              Text(
+                formatDate('${article['publishedAt'] ?? 'No Date'}'))
             ],
           ),
         ),
@@ -44,3 +50,10 @@ Widget buildAritcleItem(article) => Padding(
     ],
   ),
 );
+String formatDate(String dateStr) {
+  if (dateStr != null) {
+    DateTime dateTime = DateTime.parse(dateStr);
+    return DateFormat('dd-MM-yyyy').format(dateTime); // Customize the format pattern as needed
+  }
+  return 'No Date';
+}

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:news_app/components/sharedPref.dart';
 import 'package:news_app/cubid/dio_helper.dart';
 
 import 'cubid/applayout.dart';
@@ -13,17 +16,9 @@ class MyApp extends StatelessWidget
   @override
   Widget build(BuildContext context){
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
 
-      theme: ThemeData(scaffoldBackgroundColor: Colors.white,
-        appBarTheme:  AppBarTheme(
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.white38,
-          statusBarIconBrightness: Brightness.dark
-        )
-
-      ),
-      ),
+      theme:  Styles.lightThemeData(context),
+      darkTheme: Styles.darkThemeData(context),
       home:AppLayout() ,
     );
   }
